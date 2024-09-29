@@ -9,7 +9,7 @@ I am a Golang Backend Engineer who swims with Kubernetes and rows with cool DevO
 
 <p>
     <a href="https://github.com/obaydullahmhs?tab=repositories">
-        <img alt="Obaydullah's GitHub stats"  width="auto" src=./stats/obaydullah-github-stats.svg>
+        <img alt="Obaydullah's GitHub stats"  width="auto" src=./stats/obaydullahmhs-github-stats.svg>
     </a>
 </p>
 
