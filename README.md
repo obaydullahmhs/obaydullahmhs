@@ -20,7 +20,7 @@ I am a Golang Backend Engineer who swims with Kubernetes and rows with cool DevO
 
 <h3 align="left">Find Me On:</h3> 
 <p align="left">
-    <a href="https://codeforces.com/profile/Segmented">
+    <a href="https://codeforces.com/profile/obaydullahmhs">
         <img alt="codeforces" src="https://img.shields.io/badge/Codeforces-445f9d?style=for-the-badge&logo=Codeforces&logoColor=white"/>
     </a>
     <a href="https://leetcode.com/obaydullahmhs/">
