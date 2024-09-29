@@ -50,7 +50,7 @@ jobs:
           plugin_stackoverflow_lines: 4
           plugin_stackoverflow_lines_snippet: 2
           plugin_stackoverflow_sections: answers-top
-          plugin_stackoverflow_user: 7360615
+          plugin_stackoverflow_user: 9487708
           plugin_topics: yes
           plugin_topics_limit: 5
           plugin_topics_mode: starred
