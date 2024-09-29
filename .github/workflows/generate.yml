@@ -1,0 +1,78 @@
+name: generate stats and gists
+
+on:
+  schedule:
+    - cron: '0 18 * * 0'
+  push:
+    branches:
+      - "master"
+  workflow_dispatch:
+
+
+jobs:
+  # use goreleaser to cross-compile go binaries and add them to GitHub release
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      -
+        name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22
+      -
+        name: Run Generator
+        run: go run generator.go
+
+      - name: Prepare git
+        env:
+          GITHUB_USER: obaydullahmhs
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        run: |
+          set -x
+          git config --global user.name "obaydullahmhs"
+          git config --global user.email "obaydullahmhs@gmail.com"
+
+      -
+        name: Check for Changes
+        run: |
+          git add --all
+          if [[ $(git status --porcelain) ]]; then
+            git commit -s -a -m "update stats and gists $(date --rfc-3339=date)"
+            git fetch origin
+            # https://git-scm.com/docs/merge-strategies
+            git pull --rebase -s ours origin master
+            git push origin HEAD
+          fi
+
+      # -
+      #   name: Create Branch
+      #   run: git checkout -b generated-files
+
+      # -
+      #   name: Commit and Push
+      #   run: |
+      #     git add .
+      #     git commit -m "Generated files"
+      #     git push origin generated-files
+          
+      # -
+      #   name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     token: ${{ secrets.METRICS_TOKEN }}
+      #     title: Generated stats and gists
+      #     body: This pull request was automatically generated.
+      #     head: generated-files
+      #     base: master
+      #     commit-message: Merge pull request #${{ github.event.pull_request.number }} from generated-files to main
+      #     delete-branch: true
+
+        
+
