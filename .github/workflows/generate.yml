@@ -47,7 +47,7 @@ jobs:
             git commit -s -a -m "update stats and gists $(date --rfc-3339=date)"
             git fetch origin
             # https://git-scm.com/docs/merge-strategies
-            git pull --rebase -s ours origin master
+            git pull --rebase -s ours origin main
             git push origin HEAD
           fi
 
@@ -70,7 +70,7 @@ jobs:
       #     title: Generated stats and gists
       #     body: This pull request was automatically generated.
       #     head: generated-files
-      #     base: master
+      #     base: main
       #     commit-message: Merge pull request #${{ github.event.pull_request.number }} from generated-files to main
       #     delete-branch: true
 
